@@ -1,13 +1,15 @@
-1 Option
+df = pd.DataFrame.from_dict()
+
+#1 Option
 print(df1 = df.apply(lambda x: x.explode() if x.name in ['Col1', 'Col2', 'Col3', 'Col4', 'Col5'] else x))
 
-2 Option
+#2 Option
 print(df.set_index(['Col1'])
               .apply(lambda x: x.apply(pd.Series).stack())
              .reset_index(level=0, drop=False).reset_index())
 
 print(df2)
 
-3 Option
+#3 Option
 
 print(df3.groupby(['Col1']).ffill().reindex(df2.columns, axis=1))
